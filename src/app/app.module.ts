@@ -12,6 +12,10 @@ import { PhoneBookComponent } from './phone-book/phone-book.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +27,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PhoneBookComponent,
     NotFoundComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
