@@ -3,32 +3,84 @@
 <h4>Enter Details</h4>
 <hr />
 
-<form>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
   <div class="form-group">
     <label>Name</label>
-    <input type="text" class="form-control" name="name" />
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      ngModel
+      #name="ngModel"
+      required
+      minlength="5"
+    />
+    <span
+      class="text-danger"
+      *ngIf="name.dirty && name.invalid && name.errors?.required"
+      >Name is required</span
+    >
+    <span
+      class="text-danger"
+      *ngIf="name.dirty && name.invalid && name.errors?.minlength"
+      >Minimum length is 5 characters</span
+    >
   </div>
   <div class="form-group">
     <label>Telephone</label>
-    <input type="number" class="form-control" name="telephone" />
+    <input
+      type="number"
+      class="form-control"
+      name="telephone"
+      ngModel
+      #telephone="ngModel"
+      maxlength="11"
+    />
   </div>
   <div class="form-group">
     <label>Mobilephone</label>
-    <input type="number" class="form-control" name="mobilephone" />
+    <input
+      type="number"
+      class="form-control"
+      name="mobilephone"
+      ngModel
+      #mobilephone="ngModel"
+      maxlength="10"
+    />
   </div>
   <div class="form-group">
     <label>Email</label>
-    <input type="text" class="form-control" name="email" />
+    <input
+      type="text"
+      class="form-control"
+      name="email"
+      ngModel
+      #email="ngModel"
+      maxlength="50"
+    />
   </div>
   <div class="form-group">
     <label>Category</label>
-    <select name="category" class="form-control">
-      <option>--- Select ---</option>
+    <select
+      name="category"
+      class="form-control"
+      ngModel
+      #category="ngModel"
+      required
+    >
+      <option value="">--- Select ---</option>
       <option value="friend">Friend</option>
       <option value="colleague">Colleague</option>
       <option value="other">Other</option>
     </select>
+    <span
+      class="text-danger"
+      *ngIf="category.touched && category.invalid && category.errors?.required"
+      >Category is required</span
+    >
   </div>
 
-  <button class="btn btn-primary float-right mt-4">Submit</button>
+  <button class="btn btn-primary float-right mt-4" [disabled]="f.invalid">
+    Submit
+  </button>
 </form>

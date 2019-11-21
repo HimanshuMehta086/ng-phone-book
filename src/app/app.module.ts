@@ -10,10 +10,20 @@ import { TFormComponent } from './t-form/t-form.component';
 import { RFormComponent } from './r-form/r-form.component';
 import { PhoneBookComponent } from './phone-book/phone-book.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, PageContainerComponent, HomeComponent, TFormComponent, RFormComponent, PhoneBookComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    PageContainerComponent,
+    HomeComponent,
+    TFormComponent,
+    RFormComponent,
+    PhoneBookComponent,
+    NotFoundComponent
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
