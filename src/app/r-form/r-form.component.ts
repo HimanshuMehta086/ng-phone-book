@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PhoneService } from '../_services/phone.service';
 
 @Component({
   selector: 'app-r-form',
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RFormComponent implements OnInit {
   form: FormGroup;
 
-  constructor() {}
+  constructor(private phoneService: PhoneService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -42,6 +43,9 @@ export class RFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    this.phoneService
+      .createContact(this.form)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
   }
 }

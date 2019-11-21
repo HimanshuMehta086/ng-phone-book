@@ -1,1 +1,27 @@
-<p>phone-book works!</p>
+<h2>Phonebook</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Phone
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Category
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of phonebook$ | async">
+      <td>{{ contact.name }}</td>
+      <td>{{ contact.telephone }} / {{ contact.mobilephone }}</td>
+      <td>{{ contact.email }}</td>
+      <td>{{ contact.category }}</td>
+    </tr>
+  </tbody>
+</table>
